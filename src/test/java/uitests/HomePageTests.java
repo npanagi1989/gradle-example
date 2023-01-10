@@ -2,9 +2,7 @@ package uitests;
 
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import ui.HomePage;
-import ui.HomePageWithPF;
-import ui.WebDriverHandler;
+import ui.*;
 
 import javax.swing.*;
 
@@ -43,7 +41,7 @@ public class HomePageTests {
     @Test
     public void homePageWithPageFactory() throws InterruptedException {
         HomePageWithPF homePageWithPF = new HomePageWithPF();
-        HomePage.open();
+        homePageWithPF.open();
         homePageWithPF.waitForCookiePolicyPopup();
         assertTrue(homePageWithPF.isCookiesPolicyDisplayed(), "Cookie popup displayed");
         assertTrue(homePageWithPF.clickOnSubmitButton());
@@ -58,6 +56,26 @@ public class HomePageTests {
         assertTrue(homePageWithPF.AboutUsTab(), "About us tab is displayed");
         assertTrue(homePageWithPF.partnershipTab(), "Partnership tab is displayed");
         WebDriverHandler.closeBrowser();
+    }
+
+    @Test
+    public void HomePageSelenide() throws InterruptedException {
+        HomePageSelenide homePageSelenide = new HomePageSelenide();
+        homePageSelenide.open();
+        homePageSelenide.waitForCookiePolicyPopup();
+        homePageSelenide.isCookiesPolicyDisplayed();
+        homePageSelenide.clickOnSubmitButton();
+        homePageSelenide.isLogoDisplayed();
+        homePageSelenide.verifyDemoButton();
+        homePageSelenide.verifyRealButton();
+        homePageSelenide.homeTab();
+        homePageSelenide.tradingTab();
+        homePageSelenide.platformsTab();
+        homePageSelenide.researchAndEducationTab();
+        homePageSelenide.promotionsTab();
+        homePageSelenide.AboutUsTab();
+        homePageSelenide.partnershipTab();
+        WebDriverHandlerSelenide.closeBrowser();
     }
 
 
