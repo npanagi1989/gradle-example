@@ -8,6 +8,8 @@ import com.codeborne.selenide.WebDriverRunner;
 public class WebDriverHandlerSelenide {
 
     public static void openPage(String url) {
+        //this "if" doesn't work correctly - that's why browser is not in 1920 by 1080 resolution
+        //if it was pure Selenium, browser wouldn't start at all :)
         if(WebDriverRunner.hasWebDriverStarted()){
             setup();
         }

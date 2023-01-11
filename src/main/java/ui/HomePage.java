@@ -10,14 +10,20 @@ public class HomePage {
 
     private static final String logo = "#navigation-collapse .logo";
 
+    //using "copy selector" from dev tools is not a good approach :) this locator can be simplified to 1 class
     private static final String cookiePolicy = "#cookieModal > div > div";
 
+    // same, this locator can be simplified up to 2 steps
     private static final String cookiesButton = "#cookieModal > div > div > div.cookie-modal__defaultBlock > div.modal-footer > div.row > div:nth-child(3) > button";
 
+    //same, but you'll find 2 elements: one for high screen resolution, one for low
     private static final String demoButton = "//*[@id=\"hero-content\"]/div[4]/div[1]/div[4]/div/div/div[1]/a";
 
+    //same, again, 2 elements
     private static final String realButton = "//*[@id=\"hero-content\"]/div[4]/div[1]/div[4]/div/div/div[5]/a";
 
+    //for these tabs, it's better to use a single common locator and findElements() method - it's harder than finding
+    //locators one by one, but try that just for exercise!
     private static final String homeTab = "main_nav_home";
 
     private static final String tradingTab = "main_nav_trading";
@@ -37,7 +43,7 @@ public class HomePage {
     }
 
     public void waitForCookiePolicyPopup(){
-        WebDriverHandler.getWait();
+        WebDriverHandler.getWait(); //this method does nothing :)
     }
 
     public boolean isLogoDisplayed() {
@@ -48,10 +54,11 @@ public class HomePage {
         return WebDriverHandler.getDriver().findElement(By.cssSelector(cookiePolicy)).isDisplayed();
     }
 
-    public boolean clickOnSubmitButton() {
+    public boolean clickOnSubmitButton() { //why does this method return value? why not void? you don't need to assert this -
+        //if element is not found, you'll get an exception; if it's found, test will continue to actual checks
         if (WebDriverHandler.getDriver().findElement(By.cssSelector(cookiesButton)).isEnabled()) {
             WebDriverHandler.getDriver().findElement(By.cssSelector(cookiesButton)).click();
-            if (!WebDriverHandler.getDriver().findElement(By.cssSelector(cookiesButton)).isDisplayed()) ;
+            if (!WebDriverHandler.getDriver().findElement(By.cssSelector(cookiesButton)).isDisplayed()) ; //why do you need this "if"? there's no code inside
         }
         return true;
     }
@@ -85,6 +92,7 @@ public class HomePage {
         return WebDriverHandler.getDriver().findElement(By.className(promotionsTab)).isDisplayed();
     }
 
+    //methods start with lower case letter :)
     public boolean AboutUsTab() {
         return WebDriverHandler.getDriver().findElement(By.className(aboutUsTab)).isDisplayed();
     }

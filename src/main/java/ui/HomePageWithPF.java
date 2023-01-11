@@ -13,6 +13,7 @@ public class HomePageWithPF {
     @FindBy(css = "#navigation-collapse .logo")
     private WebElement logo;
 
+    //same comments for locators as in HomePage
     @FindBy(css = "#cookieModal > div > div")
     private WebElement cookiePolicy;
 
@@ -66,6 +67,7 @@ public class HomePageWithPF {
         return cookiePolicy.isDisplayed();
     }
 
+    //same comments as in HomePage
     public boolean clickOnSubmitButton() {
         if (cookiesButton.isEnabled()) {
             cookiesButton.click();
@@ -103,6 +105,7 @@ public class HomePageWithPF {
         return promotionsTab.isDisplayed();
     }
 
+    //same comment as in HomePage
     public boolean AboutUsTab() {
         return aboutUsTab.isDisplayed();
     }

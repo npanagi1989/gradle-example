@@ -30,6 +30,7 @@ public class WebDriverHandler {
     public static void closeBrowser() {
 
         getDriver().quit();
+        webDriver = null; //adding this to be able to run 2+ tests, explained in last wrap-up session
     }
 
     public static WebDriverWait getWait() {

@@ -23,6 +23,8 @@ public class HomePageTests {
         HomePage homePage = new HomePage();
         HomePage.open();
         homePage.waitForCookiePolicyPopup();
+        //messages in assertions are displayed if assertion is failed - so usually they look like "something wasn't
+        // working" rather than "something is working"
         assertTrue(homePage.isCookiesPolicyDisplayed(), "Cookie popup displayed");
         assertTrue(homePage.clickOnSubmitButton());
         assertTrue(homePage.isLogoDisplayed(), "Logo is displayed");
@@ -35,6 +37,7 @@ public class HomePageTests {
         assertTrue(homePage.promotionsTab(), "Promotions tab is displayed");
         assertTrue(homePage.AboutUsTab(), "About us tab is displayed");
         assertTrue(homePage.partnershipTab(), "Partnership tab is displayed");
+        //you already close the browser in @AfterMethod - there's no need to do it twice, or "just in case" :)
         WebDriverHandler.closeBrowser();
     }
 
@@ -55,6 +58,7 @@ public class HomePageTests {
         assertTrue(homePageWithPF.promotionsTab(), "Promotions tab is displayed");
         assertTrue(homePageWithPF.AboutUsTab(), "About us tab is displayed");
         assertTrue(homePageWithPF.partnershipTab(), "Partnership tab is displayed");
+        //same comment
         WebDriverHandler.closeBrowser();
     }
 
@@ -63,6 +67,8 @@ public class HomePageTests {
         HomePageSelenide homePageSelenide = new HomePageSelenide();
         homePageSelenide.open();
         homePageSelenide.waitForCookiePolicyPopup();
+        //you have no assertions in this test :) either change these methods to use conditions that wait for specific states
+        //of elements and return no value, or add assertions here
         homePageSelenide.isCookiesPolicyDisplayed();
         homePageSelenide.clickOnSubmitButton();
         homePageSelenide.isLogoDisplayed();
@@ -75,6 +81,7 @@ public class HomePageTests {
         homePageSelenide.promotionsTab();
         homePageSelenide.AboutUsTab();
         homePageSelenide.partnershipTab();
+        //same comment
         WebDriverHandlerSelenide.closeBrowser();
     }
 

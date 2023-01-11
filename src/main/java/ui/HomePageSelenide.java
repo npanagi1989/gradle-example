@@ -14,6 +14,7 @@ public class HomePageSelenide {
 
     private final static SelenideElement logo = $("#navigation-collapse .logo");
 
+    //same comments for locators as in HomePage
     private final static SelenideElement cookiePolicy = $("#cookieModal > div > div");
 
     private final static SelenideElement cookiesButton = $("#cookieModal > div > div > div.cookie-modal__defaultBlock > div.modal-footer > div.row > div:nth-child(3) > button");
@@ -57,10 +58,13 @@ public class HomePageSelenide {
     }
 
     public boolean verifyDemoButton(){
+        //this contains() method is from AbstractCollection class - it checks if collection contains element Condition.visible
+        //probably, you wanted to do something else :)
         return demoButton.contains(Condition.visible);
     }
 
     public boolean verifyRealButton(){
+        //same comment
         return realButton.contains(Condition.visible);
     }
 
@@ -84,6 +88,7 @@ public class HomePageSelenide {
         return promotionsTab.isDisplayed();
     }
 
+    //same comment as in HomePage
     public boolean AboutUsTab() {
         return aboutUsTab.isDisplayed();
     }
